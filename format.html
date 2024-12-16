@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Exploration des Données Géospatiales Cloud</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="https://cdn.jsdelivr.net/npm/leaflet@1.7.1/dist/leaflet.js"></script>
+  <style>
+    /* Styles de base pour le bouton de contact */
+    .contact-btn {
+      position: fixed; /* Fixed pour toujours le garder visible */
+      top: 10px;
+      right: 10px;
+      background-color: #007BFF;
+      color: white;
+      padding: 10px 15px;
+      border: none;
+      border-radius: 5px;
+      text-decoration: none;
+      font-size: 14px;
+      font-family: Arial, sans-serif;
+      cursor: pointer;
+      transition: background-color 0.3s;
+      z-index: 1000; /* Assurez-vous qu'il est au-dessus des autres éléments */
+    }
+
+    .contact-btn:hover {
+      background-color: #0056b3;
+    }
+
+    .hero-section {
+      position: relative;
+      text-align: center;
+      background-color: #f4f4f4;
+      padding: 50px 20px;
+    }
+
+    .content-box {
+      max-width: 800px;
+      margin: auto;
+    }
+
+    .cta-btn a {
+      text-decoration: none;
+      color: white;
+    }
+
+    .cta-btn {
+      background-color: #28a745;
+      padding: 10px 20px;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .cta-btn:hover {
+      background-color: #218838;
+    }
+
+    .footer {
+      text-align: center;
+      padding: 20px;
+      background-color: #333;
+      color: white;
+    }
+  </style>
+</head>
+<body>
+  <!-- Bouton de contact -->
+  <a href="contact.html" class="contact-btn">Contact</a>
+
+  <!-- Bannière -->
+  <section class="hero-section">
+    <div class="content-box">
+        <h1>Explorez les données géospatiales du Maroc avec les technologies Cloud</h1>
+        <p>Découvrez les formats de données cloud-friendly tels que Zarr, COG, et GeoParquet.</p>
+        <button class="cta-btn"><a href="formats.html">Commencez à explorer</a></button>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <p>© 2024 Données Géospatiales Cloud-Friendly | Tous droits réservés</p>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GeoTIFF Optimisé pour le Cloud</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-color: #001F3F;
+            color: white;
+        }
+
+        header {
+            text-align: center;
+            padding: 50px;
+            background: linear-gradient(135deg, #002244, #003366);
+        }
+
+        header h1 {
+            color: #00AEEF;
+            font-size: 5rem;
+        }
+
+        nav {
+            display: flex;
+            justify-content: center;
+            padding: 20px 0;
+            background-color: #002244;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 20px;
+            font-size: 1.5rem;
+            transition: color 0.3s;
+        }
+
+        nav a.active {
+            border-bottom: 2px solid #00AEEF;
+            color: #00AEEF;
+        }
+
+        nav a:hover {
+            color: #00AEEF;
+        }
+
+        .banner {
+            text-align: center;
+            padding: 50px;
+        }
+
+        .banner img {
+            max-width: 40%;
+            height: auto;
+            border-radius: 20px;
+        }
+
+        section {
+            padding: 70px 40px;
+            text-align: center;
+            opacity: 0;
+            transform: translateY(50px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        section.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        section h2 {
+            color: #00AEEF;
+            font-size: 3rem;
+            margin-bottom: 30px;
+        }
+
+        .introduction {
+            background-color: #003366;
+            padding: 50px;
+            border-radius: 20px;
+            margin: 40px auto;
+            width: 80%;
+        }
+
+        .introduction p {
+            font-size: 1.5rem;
+            margin-bottom: 30px;
+        }
+
+        .cards {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .card {
+            background-color: #004080;
+            border-radius: 10px;
+            padding: 20px;
+            width: 300px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            text-align: left;
+        }
+
+        .card h3 {
+            color: #00AEEF;
+            margin-bottom: 10px;
+        }
+
+        .logos {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .logos img {
+            width: 150px;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        footer {
+            background-color: #002244;
+            padding: 20px 0;
+            text-align: center;
+            color: #00AEEF;
+            font-size: 1rem;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: #00AEEF;
+            color: white;
+            text-decoration: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            margin-top: 20px;
+            font-size: 1rem;
+            text-align: center;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn:hover {
+            background-color: #008ECF;
+        }
+
+        @media (max-width: 768px) {
+            nav a {
+                margin: 0 10px;
+                font-size: 1rem;
+            }
+
+            section h2 {
+                font-size: 2rem;
+            }
+
+            .card {
+                width: 90%;
+            }
+
+            .logos img {
+                width: 120px;
+            }
+        }
+    </style>
+    <script>
+        // Gestion de l'affichage des sections
+        document.addEventListener('DOMContentLoaded', () => {
+            const sections = document.querySelectorAll('section');
+            const navLinks = document.querySelectorAll('nav a');
+
+            function activateSection() {
+                const scrollPosition = window.scrollY + window.innerHeight / 2;
+                sections.forEach((section, index) => {
+                    if (scrollPosition >= section.offsetTop) {
+                        sections.forEach(sec => sec.classList.remove('active'));
+                        navLinks.forEach(link => link.classList.remove('active'));
+                        section.classList.add('active');
+                        navLinks[index].classList.add('active');
+                    }
+                });
+            }
+
+            activateSection();
+            window.addEventListener('scroll', activateSection);
+        });
+    </script>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <h1>GeoTIFF Optimisé pour le Cloud</h1>
+    </header>
+
+    <!-- Banner -->
+    <div class="banner">
+        <img src="Cog-02.png" alt="Image représentant le COG">
+    </div>
+
+    <!-- Navigation -->
+    <nav>
+        <a href="#introduction">Introduction</a>
+        <a href="#pourquoi">Pourquoi COG ?</a>
+        <a href="#fonctionnement">Comment ça fonctionne ?</a>
+        
+        <a href="carte.html" class="btn">Voir la carte</a>
+    </nav>
+
+    <!-- Sections -->
+    <section id="introduction">
+        <h2>Introduction</h2>
+        <div class="introduction">
+            <p>Le GeoTIFF Optimisé pour le Cloud permet un accès rapide et efficace aux données géospatiales directement sur le cloud.</p>
+            
+        </div>
+    </section>
+
+    <section id="pourquoi">
+        <h2>Pourquoi utiliser un GeoTIFF optimisé ?</h2>
+        <div class="cards">
+            <div class="card">
+                <h3>Accès efficace</h3>
+                <p>Le COG permet d'accéder uniquement à la portion des données dont vous avez besoin.</p>
+            </div>
+            <div class="card">
+                <h3>Moins de duplication</h3>
+                <p>Les logiciels cloud utilisent le même fichier sans duplication.</p>
+            </div>
+            <div class="card">
+                <h3>Compatibilité</h3>
+                <p>Compatible avec les logiciels SIG traditionnels comme un GeoTIFF normal.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="fonctionnement">
+        <h2>Comment ça fonctionne ?</h2>
+        <p>Les pixels de l'image sont organisés efficacement pour un accès via des requêtes HTTP.</p>
+        <img src="fonctionnemnt.png" alt="Schéma de fonctionnement">
+        
+    </section>
+
+    
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 GeoTIFF Optimisé pour le Cloud - Tous droits réservés</p>
+    </footer>
+</body>
+</html>

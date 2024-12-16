@@ -1,0 +1,146 @@
+/* Style global */
+body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    background: #f6f8fa;
+    font-family: 'Arial', sans-serif;
+    font-size: 18px; /* Augmentation de la taille de la police globale */
+  }
+  
+  /* Bannière */
+  .hero-section {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background: url('donneeeeee.png') no-repeat center center fixed;
+    background-size: cover;
+    z-index: 1;
+  }
+  
+/* Bannière */
+.hero-section {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background: url('donneeeeee.png') no-repeat center center fixed;
+    background-size: cover;
+    z-index: 1;
+  }
+  
+  .content-box {
+    background-color: rgba(255, 255, 255, 0.8); /* Fond blanc semi-transparent */
+    padding: 40px;
+    border-radius: 15px; /* Coins arrondis */
+    border: 3px solid #457b9d; /* Bordure de couleur bleu clair */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Ombre douce pour ajouter de la profondeur */
+    width: 80%; /* Limiter la largeur pour le contenu */
+    max-width: 800px; /* Largeur maximale du rectangle */
+    text-align: center; /* Centrer le texte */
+  }
+  
+  .hero-section h1 {
+    font-size: 4em; /* Augmenter la taille du titre */
+    color: rgb(93, 62, 232);
+    margin-bottom: 1em;
+  }
+  
+  .hero-section .cta-btn {
+    padding: 15px 35px;
+    background-color: #160d06;
+    color: rgb(220, 209, 209);
+    border: none;
+    font-size: 1.3em; /* Augmenter la taille du bouton */
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .hero-section .cta-btn a {
+    color: rgb(220, 209, 209);
+    text-decoration: none;
+  }
+  
+  /* Footer */
+  .footer {
+    background-color: #1d3557;
+    color: white;
+    text-align: center;
+    padding: 30px;
+    font-size: 1.2em; /* Augmenter la taille du texte du footer */
+  }
+  
+  /* Section formats de données (Page des formats) */
+  .formats-section {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    padding: 50px;
+    text-align: center;
+  }
+  
+  .format {
+    background-color: #f4f4f4;
+    padding: 30px;
+    border-radius: 10px;
+    width: 30%;
+    margin: 20px 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+    background-color: #e2f0d9; /* Couleur de fond par défaut */
+    font-size: 1.5em; /* Augmentation de la taille de la police pour les formats */
+  }
+  
+  /* Ajout de couleurs différentes pour chaque format */
+  #zarr {
+    background-color: #f59090; /* Couleur pour Zarr */
+  }
+  
+  #cog {
+    background-color: #dbf3a8; /* Couleur pour COG */
+  }
+  
+  #geoparquet {
+    background-color: #05b3ed; /* Couleur pour GeoParquet */
+  }
+  
+  /* Animation au survol des formats */
+  .format:hover {
+    transform: scale(1.05);
+  }
+  
+  /* Bouton d'exploration avec animation */
+  .explore-btn {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 15px 25px;
+    background-color: #457b9d;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 1.2em; /* Augmentation de la taille du texte du bouton */
+    transition: background-color 0.3s ease, transform 0.3s ease;
+  }
+  
+  .explore-btn:hover {
+    background-color: #1d3557;
+    transform: translateY(-5px);
+  }
+  
+  /* Footer */
+  .footer {
+    background-color: #1d3557;
+    color: white;
+    text-align: center;
+    padding: 30px;
+    font-size: 1.2em; /* Augmenter la taille du texte du footer */
+  }
+  

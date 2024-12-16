@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contactez-nous</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+      background: url('background.jpg') no-repeat center center/cover;
+    }
+
+    .content {
+      flex: 0 0 auto;
+      padding: 10px;
+      text-align: center;
+      background-color: rgba(0, 0, 0, 0.6);
+      font-size: 1.2rem;
+      color: white;
+    }
+
+    .contact-section {
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      flex-grow: 1;
+      padding: 20px;
+    }
+
+    .contact-container {
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    .contact-card {
+      background: rgba(255, 255, 255, 0.95);
+      border-radius: 10px;
+      padding: 15px 20px;
+      text-align: center;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+      width: 220px;
+      height: 300px; /* Ajusté pour inclure l'image entière */
+      margin-top: 60px;
+      overflow: visible; /* Assure que l'image est visible */
+    }
+
+    .profile-picture {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      object-fit: cover; /* Empêche les déformations */
+      border: 3px solid white;
+      position: relative; /* Change de absolute à relative */
+      margin-top: -50px; /* Position légèrement vers le haut */
+    }
+
+    .contact-card h2 {
+      font-size: 1rem;
+      color: #333;
+      margin-top: 20px;
+      margin-bottom: 10px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .contact-card p {
+      font-size: 0.85rem;
+      color: #555;
+      margin-bottom: 5px;
+    }
+
+    .contact-card .info {
+      font-size: 0.9rem;
+      font-weight: bold;
+      color: #e74c3c;
+    }
+
+    .contact-card .info span {
+      display: inline-block; /* Permet un affichage flexible */
+      font-size: 0.85rem;
+      color: #000;
+      white-space: normal; /* Permet le retour à la ligne */
+      word-break: break-word; /* Coupe les longues chaînes */
+    }
+
+    .map-section {
+      padding: 20px;
+      text-align: center;
+      background-color: rgba(255, 255, 255, 0.95);
+      border-radius: 10px;
+      margin: 20px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    }
+
+    .map-section iframe {
+      width: 100%;
+      max-width: 800px;
+      height: 400px;
+      border: none;
+      border-radius: 10px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    }
+
+    .address-info {
+      margin: 10px 0;
+      font-size: 1rem;
+      color: #333;
+    }
+
+    .directions-button {
+      padding: 10px 20px;
+      font-size: 1rem;
+      color: white;
+      background-color: #007BFF;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    }
+
+    .directions-button:hover {
+      background-color: #0056b3;
+    }
+
+    /* Pied de page */
+    .footer {
+      text-align: center;
+      color: #aaa;
+      font-size: 0.9em;
+      padding: 10px;
+      background-color: #444;
+      flex: 0 0 auto;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="content">
+    <p>N'hésitez pas à nous contacter !</p>
+  </div>
+
+  <div class="contact-section">
+    <div class="contact-container">
+      <!-- Cartes de contact -->
+      <div class="contact-card">
+        <img src="tarik.jpg" alt="Photo de profil" class="profile-picture">
+        <h2>Ouazzine Tarik</h2>
+        <p class="info">Email : <span>ouazzinetarik@iav.ac.ma</span></p>
+        <p class="info">Téléphone : <span>+212 6 84 49 14 74</span></p>
+      </div>
+
+      <div class="contact-card">
+        <img src="ayoub.jpg" alt="Photo de profil" class="profile-picture">
+        <h2>Sanad Ayoub</h2>
+        <p class="info">Email : <span>sanadayoub@iav.ac.ma</span></p>
+        <p class="info">Téléphone : <span>+212 6 11 21 56 13</span></p>
+      </div>
+      <div class="contact-card">
+        <img src="brahim.jpg" alt="Photo de profil" class="profile-picture">
+        <h2>Baida Brahim</h2>
+        <p class="info">Email : <span>brahim.bn2003@gmail.com</span></p>
+        <p class="info">Téléphone : <span>+212 6 36 42 43 00</span></p>
+      </div>
+
+      <div class="contact-card">
+        <img src="simo.jpg" alt="Photo de profil" class="profile-picture">
+        <h2>Boucahntiya Mohamed</h2>
+        <p class="info">Email : <span>bouchantiyamohamed@gmail.com</span></p>
+        <p class="info">Téléphone : <span>+212 6 74 56 66 93</span></p>
+      </div>
+
+
+      <div class="contact-card">
+        <img src="yassir.jpg" alt="Photo de profil" class="profile-picture">
+        <h2>Ait Youssef Yassir</h2>
+        <p class="info">Email : <span>aityoussefyassir@iav.ac.ma</span></p>
+        <p class="info">Téléphone : <span>+212 6 50 40 70 95</span></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Section carte -->
+  <div class="map-section">
+    <h3>Notre localisation</h3>
+    <p class="address-info">Département des Sciences Géomatiques et Ingénierie Topographique, IAV Hassan II, Rabat, Maroc</p>
+    <iframe 
+  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3318.703199912531!2d-6.863093324229603!3d33.972162780832024!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xda76c873eae437b%3A0xcaff53b30e801c62!2sD%C3%A9partement%20des%20Sciences%20G%C3%A9omatiques%20et%20Ing%C3%A9nierie%20Topographique%2C%20IAV%20Hassan%20II!5e0!3m2!1sfr!2sma!4v1702633484920!5m2!1sfr!2sma" 
+  allowfullscreen="" 
+  loading="lazy" 
+  referrerpolicy="no-referrer-when-downgrade">
+</iframe>
+    <br>
+    <button class="directions-button" onclick="window.open('https://www.google.com/maps/dir/?api=1&destination=D%C3%A9partement+des+Sciences+G%C3%A9omatiques,+IAV+Hassan+II,+Rabat,+Maroc')">
+      Obtenir l'itinéraire
+    </button>
+  </div>
+
+  <!-- Pied de Page -->
+  <div class="footer">
+    Copyright &copy; IAV HASSAN II 2024 . Tous droits réservés.
+  </div>
+</body>
+</html>

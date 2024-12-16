@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zarr : Stockage Moderne</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-color: #0D1B2A;
+            color: white;
+        }
+
+        header {
+            text-align: center;
+            padding: 50px;
+            background: linear-gradient(135deg, #1B263B, #415A77);
+        }
+
+        header h1 {
+            color: #E0E1DD;
+            font-size: 5rem;
+        }
+
+        nav {
+            display: flex;
+            justify-content: center;
+            padding: 20px 0;
+            background-color: #1B263B;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 20px;
+            font-size: 1.5rem;
+            transition: color 0.3s;
+        }
+
+        nav a.active {
+            border-bottom: 2px solid #E0E1DD;
+            color: #E0E1DD;
+        }
+
+        nav a:hover {
+            color: #E0E1DD;
+        }
+
+        .banner {
+            text-align: center;
+            padding: 50px;
+        }
+
+        .banner img {
+            max-width: 40%;
+            height: auto;
+            border-radius: 20px;
+        }
+
+        section {
+            padding: 70px 40px;
+            text-align: center;
+            opacity: 0;
+            transform: translateY(50px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        section.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        section h2 {
+            color: #E0E1DD;
+            font-size: 3rem;
+            margin-bottom: 30px;
+        }
+
+        .introduction {
+            background-color: #415A77;
+            padding: 50px;
+            border-radius: 20px;
+            margin: 40px auto;
+            width: 80%;
+        }
+
+        .introduction p {
+            font-size: 1.5rem;
+            margin-bottom: 30px;
+        }
+
+        .cards {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .card {
+            background-color: #1E3A56;
+            border-radius: 10px;
+            padding: 20px;
+            width: 300px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            text-align: left;
+        }
+
+        .card h3 {
+            color: #E0E1DD;
+            margin-bottom: 10px;
+        }
+
+        .logos {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .logos img {
+            width: 150px;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        footer {
+            background-color: #1B263B;
+            padding: 20px 0;
+            text-align: center;
+            color: #E0E1DD;
+            font-size: 1rem;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: #E0E1DD;
+            color: #0D1B2A;
+            text-decoration: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            margin-top: 20px;
+            font-size: 1rem;
+            text-align: center;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn:hover {
+            background-color: #C9D6E0;
+        }
+
+        @media (max-width: 768px) {
+            nav a {
+                margin: 0 10px;
+                font-size: 1rem;
+            }
+
+            section h2 {
+                font-size: 2rem;
+            }
+
+            .card {
+                width: 90%;
+            }
+
+            .logos img {
+                width: 120px;
+            }
+        }
+    </style>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const sections = document.querySelectorAll('section');
+            const navLinks = document.querySelectorAll('nav a');
+
+            function activateSection() {
+                const scrollPosition = window.scrollY + window.innerHeight / 2;
+                sections.forEach((section, index) => {
+                    if (scrollPosition >= section.offsetTop) {
+                        sections.forEach(sec => sec.classList.remove('active'));
+                        navLinks.forEach(link => link.classList.remove('active'));
+                        section.classList.add('active');
+                        navLinks[index].classList.add('active');
+                    }
+                });
+            }
+
+            activateSection();
+            window.addEventListener('scroll', activateSection);
+        });
+    </script>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <h1>Zarr : Stockage Moderne</h1>
+    </header>
+
+    <!-- Banner -->
+    <div class="banner">
+        <img src="zarr.png" alt="Image représentant Zarr">
+    </div>
+
+    <!-- Navigation -->
+    <nav>
+        <a href="#introduction">Introduction</a>
+        <a href="#avantages">Avantages</a>
+        <a href="#fonctionnement">Fonctionnement</a>
+        <a href="carte_temperature_maroc_2022_creative.html" class="btn">Voir la carte</a>
+    </nav>
+
+    <!-- Sections -->
+    <section id="introduction">
+        <h2>Introduction</h2>
+        <div class="introduction">
+            <p>Zarr est un format innovant pour le stockage multidimensionnel des données scientifiques et géospatiales.</p>
+        </div>
+    </section>
+
+    <section id="avantages">
+        <h2>Avantages de Zarr</h2>
+        <div class="cards">
+            <div class="card">
+                <h3>Performance</h3>
+                <p>Lecture/écriture rapide, adapté au cloud et au local.</p>
+            </div>
+            <div class="card">
+                <h3>Flexible</h3>
+                <p>Supporte plusieurs langages comme Python, C++, JavaScript.</p>
+            </div>
+            <div class="card">
+                <h3>Évolutif</h3>
+                <p>Manipule d'énormes jeux de données distribués.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="fonctionnement">
+        <div class="introduction">
+        <h2>Fonctionnement</h2>
+        <p>Les données sont compressées et organisées en blocs indépendants pour un accès rapide et parallèle.</p>
+    </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 Zarr : Stockage Moderne - Tous droits réservés</p>
+    </footer>
+</body>
+</html>

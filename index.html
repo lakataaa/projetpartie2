@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GeoParquet - Données géospatiales avec Apache Parquet</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        /* Styles de base */
+        body {
+            font-family: 'Montserrat', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #e4e0e0;
+        }
+
+        header {
+            background-color: #003366;
+            color: white;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2rem;
+        }
+
+        nav {
+            display: flex;
+            gap: 15px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            background-color: #005BB5;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+        }
+
+        nav a:hover {
+            background-color: #0078D4;
+        }
+
+        nav a.active {
+            border-bottom: 2px solid yellow;
+        }
+
+        section {
+            display: none;
+            padding: 20px;
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out;
+        }
+
+        section.active {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            min-height: 100vh;
+            padding: 40px;
+            opacity: 1;
+        }
+
+        #introduction {
+            background: linear-gradient(135deg, #0078D4, #87CEEB);
+            color: white;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+        }
+
+        #introduction .text {
+            flex: 1;
+            padding: 20px;
+        }
+
+        #introduction h2 {
+            font-size: 3rem;
+        }
+
+        #introduction p {
+            font-size: 1.5rem;
+            line-height: 1.8;
+        }
+
+        #introduction .image {
+            flex: 1;
+            text-align: center;
+        }
+
+        #introduction img {
+            width: 80%;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        #pourquoi ul {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        #pourquoi ul li {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+            font-size: 2rem;
+            color: rgb(18, 15, 15);
+        }
+
+        #pourquoi ul li img {
+            width: 80px;
+            height: 80px;
+            margin-right: 20px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: #003366;
+            color: white;
+            margin-top: 20px;
+        }
+
+        /* Animation pour les listes */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        #pourquoi ul li {
+            animation: fadeInUp 0.6s ease-in-out;
+            animation-delay: calc(var(--i) * 0.2s);
+            animation-fill-mode: both;
+            opacity: 0;
+        }
+        section#logiciels {
+            padding: 50px;
+            text-align: center;
+            background-color: #002244;
+            border-radius: 10px;
+            margin: 40px auto;
+            width: 90%;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        section#logiciels h2 {
+            color: #00AEEF;
+            font-size: 3rem;
+            margin-bottom: 30px;
+        }
+
+        .logiciels-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            gap: 40px;
+        }
+
+        .logiciel-image img {
+            max-width: 100%;
+            width: 500px;
+            height: auto;
+            border-radius: 15px;
+            box-shadow: 0 8px 16px rgba(77, 73, 73, 0.5);
+            transform: scale(1);
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+        }
+
+        .logiciel-image img:hover {
+            transform: scale(1.1);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.7);
+        }
+
+        .logiciel-description {
+            max-width: 500px;
+            text-align: left;
+        }
+
+        .logiciel-description h3 {
+            color: #00AEEF;
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+
+        .logiciel-description p {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+
+        .logiciel-description ul {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .logiciel-description ul li {
+            margin: 10px 0;
+            font-size: 1rem;
+            position: relative;
+            padding-left: 25px;
+        }
+
+        .logiciel-description ul li::before {
+            content: "✔";
+            position: absolute;
+            left: 0;
+            color: #00AEEF;
+            font-weight: bold;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: #00AEEF;
+            color: rgb(249, 246, 246);
+            text-decoration: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-size: 1.2rem;
+            transition: background-color 0.3s ease;
+            text-align: center;
+        }
+
+        .btn:hover {
+            background-color: #008ECF;
+        }
+
+        @media (max-width: 768px) {
+            .logiciels-container {
+                flex-direction: column;
+            }
+
+            .logiciel-image img {
+                width: 100%;
+            }
+
+            .logiciel-description {
+                text-align: center;
+            }
+        }
+        #content-container {
+      width: 80%;
+      max-width: 500px;
+      overflow: hidden;
+      position: relative;
+      background-color: white;
+      border-radius: 10px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .paragraph {
+      padding: 20px;
+      margin: 0;
+      display: none;
+      text-align: justify;
+      background-color: #e8f4ff;
+      border-bottom: 2px solid #d1e9ff;
+    }
+
+    .paragraph.active {
+      display: block;
+      animation: slide-in 0.5s ease-in-out;
+    }
+
+    @keyframes slide-in {
+      from {
+        transform: translateY(100%);
+        opacity: 0;
+      }
+      to {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+
+    button {
+      padding: 10px 20px;
+      margin: 20px;
+      font-size: 16px;
+      color: white;
+      background-color: #007bff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #0056b3;
+    }
+        
+        
+
+
+    </style>
+    <script>
+        function showSection(sectionId) {
+            const sections = document.querySelectorAll('section');
+            const navLinks = document.querySelectorAll('nav a');
+            sections.forEach(section => section.classList.remove('active'));
+            navLinks.forEach(link => link.classList.remove('active'));
+
+            document.getElementById(sectionId).classList.add('active');
+            document.querySelector(`nav a[href="#${sectionId}"]`).classList.add('active');
+        }
+
+        document.addEventListener("DOMContentLoaded", () => {
+            showSection('introduction'); // Afficher la première section par défaut
+        });
+    </script>
+</head>
+<body>
+    <header>
+        <h1>GeoParquet</h1>
+        <nav>
+            <a href="#introduction" onclick="showSection('introduction')">Introduction</a>
+            <a href="#pourquoi" onclick="showSection('pourquoi')">Pourquoi GeoParquet ?</a>
+            <a href="#logiciels" onclick="showSection('logiciels')">Logiciels</a>
+            <a href="visualisation du parquet.html" class="btn">Voir la carte</a>
+        </nav>
+    </header>
+
+    <section id="introduction" class="active">
+        <div class="text">
+            <h2>Bienvenue sur GeoParquet</h2>
+            <p>
+                Simplifiez vos données géospatiales avec Apache Parquet. Une technologie puissante, rapide, et conçue pour les défis du futur !
+            </p>
+        </div>
+        <div class="image">
+            <img src="geoparquet.jpg" alt="GeoParquet">
+        </div>
+    </section>
+
+    <section id="pourquoi" style="background-image: url('background.jpg'); background-size: cover; background-position: center; color: white; padding: 40px; border-radius: 10px;">
+      <h2 style="font-size: 3rem; text-align: center; margin-bottom: 20px;">Pourquoi GeoParquet ?</h2>
+      <div style="display: flex; align-items: center; gap: 20px;">
+        <!-- Section pour les images -->
+        <div style="flex: 1; text-align: center;">
+          <img src="geospatial_data.avif" alt="GeoParquet Data" style="max-width: 100%; height: auto; border-radius: 15px;">
+        </div>
+        
+        <!-- Section pour les icônes -->
+        <div style="flex: 2; padding: 20px; font-size: 1.5rem; line-height: 1.8;">
+          <ul style="list-style: none; padding: 0;">
+            <li style="display: flex; align-items: center; margin-bottom: 25px;">
+              <img src="standard-icon.png" alt="Standard" class="clickable-icon" style="width: 50px; height: 50px; margin-right: 15px; cursor: pointer;">
+              <span>Cliquez ici</span>
+            </li>
+            <li style="display: flex; align-items: center; margin-bottom: 25px;">
+              <img src="column-data-icon.png" alt="Columnar Data" class="clickable-icon" style="width: 50px; height: 50px; margin-right: 15px; cursor: pointer;">
+              <span>Cliquez ici</span>
+            </li>
+            <li style="display: flex; align-items: center;">
+              <img src="cloud-integration-icon.png" alt="Cloud Integration" class="clickable-icon" style="width: 50px; height: 50px; margin-right: 15px; cursor: pointer;">
+              <span>Cliquez ici</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    
+      <!-- Modale avec arrière-plan sombre -->
+      <div id="modal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.7); z-index: 1000; align-items: center; justify-content: center; color: white; font-size: 2rem;">
+        <div style="background: #333; padding: 20px; border-radius: 10px; text-align: center; max-width: 600px;">
+          <p id="modal-content"></p>
+          <button onclick="closeModal()" style="margin-top: 20px; padding: 10px 20px; font-size: 1.5rem; cursor: pointer;">Fermer</button>
+        </div>
+      </div>
+    </section>
+    
+    <script>
+      // Ajout des réponses pour chaque icône
+      const responses = {
+        "standard-icon.png": "GeoParquet permet de standardiser les données géospatiales pour une meilleure interopérabilité.",
+        "column-data-icon.png": "Grâce au format colonne, GeoParquet optimise la gestion des données volumineuses.",
+        "cloud-integration-icon.png": "GeoParquet assure une compatibilité parfaite avec les entrepôts de données cloud."
+      };
+    
+      // Gestion des clics sur les icônes
+      document.querySelectorAll('.clickable-icon').forEach(icon => {
+        icon.addEventListener('click', () => {
+          const response = responses[icon.getAttribute('src')];
+          document.getElementById('modal-content').innerText = response;
+          document.getElementById('modal').style.display = 'flex';
+        });
+      });
+    
+      // Fonction pour fermer le modal
+      function closeModal() {
+        document.getElementById('modal').style.display = 'none';
+      }
+    </script>
+    
+    
+  
+
+    <section id="logiciels">
+      <h2>Logiciels Compatibles avec GeoParquet</h2>
+      <div class="logiciels-container">
+          <!-- Zone pour l'image principale -->
+          <div class="logiciel-image">
+              <img src="geoparquetlogi.png" alt="GeoParquet Écosystème" />
+          </div>
+          <!-- Explications -->
+          <div class="logiciel-description">
+              <h3>Écosystème GeoParquet</h3>
+              <p>
+                  GeoParquet est pris en charge par une variété de bibliothèques et moteurs de calcul tels que 
+                  <strong>Google BigQuery, Databricks, Snowflake</strong>, et bien d'autres. Cette intégration simplifie l'analyse géospatiale en cloud 
+                  et rend l'accès aux données plus fluide.
+              </p>
+              <ul>
+                  <li>Compatible avec les moteurs de traitement Big Data modernes.</li>
+                  <li>Supporte les formats cloud tels que GeoParquet et GeoArrow.</li>
+                  <li>Accès rapide aux données pour les analyses complexes.</li>
+              </ul>
+              <a href="#" class="btn">En savoir plus</a>
+          </div>
+      </div>
+  </section>
+      <section id="logiciels" class="active">
+        <div id="conteneur-carte" class="hidden">
+          <iframe id="iframe-carte" src="carte.html" style="width: 100%; height: 600px; border: none;"></iframe>
+        </div>
+      </section>
+
+
+    <footer>
+        <p>&copy; 2024 GeoParquet - Tous droits réservés</p>
+    </footer>
+    <script src="style.js"></script>
+
+</body>
+</html>
